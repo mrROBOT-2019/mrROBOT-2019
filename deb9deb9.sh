@@ -2,10 +2,10 @@
 #this script is created by stormTEAM for debian 9
 ln -fs /usr/share/zoneinfo/Asia/Manila /etc/localtime
 MYIP=$(wget -qO- ipv4.icanhazip.com)
-dbhost='185.61.137.171';
-dbuser='stormvpv_bunoyuserdb';
+dbhost='185.61.137.168';
+dbuser='stormvpj_usernamenistorm';
 dbpass='bunoyuserdb2019';
-dbname='stormvpv_bunoystormd';
+dbname='stormvpj_ipildatabase';
 cacert='-----BEGIN CERTIFICATE-----
 MIIE5TCCA82gAwIBAgIJAP0GLynOqm38MA0GCSqGSIb3DQEBCwUAMIGnMQswCQYD
 VQQGEwJQSDERMA8GA1UECBMIQmF0YW5nYXMxETAPBgNVBAcTCEJhdGFuZ2FzMRIw
@@ -594,7 +594,7 @@ echo "IP: $MYIP" >> /root/install.txt
 echo "OpenVPN PORT: 443" >> /root/install.txt
 echo "Squid Normal Port: 8080" >> /root/install.txt
 echo "Squid SSL Port: 8888" >> /root/install.txt
-echo "Privoxy Port: 8118" >> /root/install.txt
+echo "Privoxy Port: 8080" >> /root/install.txt
 echo "Dropbear Port 1: 225" >> /root/install.txt
 echo "Dropbear Port 2: 550" >> /root/install.txt
 echo "Dropbear SSL Port: 466" >> /root/install.txt
