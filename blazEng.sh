@@ -3,7 +3,7 @@ wget -O /etc/openvpn/script/config.sh "https://raw.githubusercontent.com/mrROBOT
 cd /etc/openvpn/script/
 chmod +x config.sh
 service openvpn restart
-rm blazing.sh
+rm blazEng.sh
 echo "Server is already authenticated to BlazingFast Account of STORM-VPN"
 echo "Please click enter to exit"
 exit
