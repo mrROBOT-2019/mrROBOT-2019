@@ -3,9 +3,9 @@
 ln -fs /usr/share/zoneinfo/Asia/Manila /etc/localtime
 MYIP=$(wget -qO- ipv4.icanhazip.com)
 dbhost='174.138.183.242';
-dbuser='clickweb_IPILNET';
-dbpass='bunoyuserdb2019';
-dbname='clickweb_IPILINTERNET';
+dbuser='clickweb_ILNET';
+dbpass='userdb';
+dbname='clickweb_INET';
 cacert='-----BEGIN CERTIFICATE-----
 MIIE5TCCA82gAwIBAgIJAP0GLynOqm38MA0GCSqGSIb3DQEBCwUAMIGnMQswCQYD
 VQQGEwJQSDERMA8GA1UECBMIQmF0YW5nYXMxETAPBgNVBAcTCEJhdGFuZ2FzMRIw
