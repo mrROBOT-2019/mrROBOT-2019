@@ -2,6 +2,51 @@
 #this script is created by stormTEAM for debian 9
 ln -fs /usr/share/zoneinfo/Asia/Manila /etc/localtime
 MYIP=$(wget -qO- ipv4.icanhazip.com)
+
+function InstUpdates(){
+ export DEBIAN_FRONTEND=noninteractive
+ apt-get update
+ apt-get upgrade -y
+ 
+ # Removing some firewall tools that may affect other services
+ apt-get remove --purge ufw firewalld -y
+
+ 
+ # Installing some important machine essentials
+ apt-get install nano wget curl zip unzip tar gzip p7zip-full bc rc openssl cron net-tools dnsutils dos2unix screen bzip2 ccrypt -y
+ 
+ # Now installing all our wanted services
+ apt-get install dropbear stunnel4 privoxy ca-certificates nginx ruby apt-transport-https lsb-release squid -y
+
+ # Installing all required packages to install Webmin
+ apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python dbus libxml-parser-perl -y
+ apt-get install shared-mime-info jq fail2ban -y
+
+ 
+ # Installing a text colorizer
+ gem install lolcat
+
+ # Trying to remove obsolette packages after installation
+ apt-get autoremove -y
+ 
+ # Installing OpenVPN by pulling its repository inside sources.list file 
+ rm -rf /etc/apt/sources.list.d/openvpn*
+ echo "deb http://build.openvpn.net/debian/openvpn/stable $(lsb_release -sc) main" > /etc/apt/sources.list.d/openvpn.list
+ wget -qO - http://build.openvpn.net/debian/openvpn/stable/pubkey.gpg|apt-key add -
+ apt-get update
+ apt-get install openvpn -y
+}
+
+ rm -rf /etc/apt/sources.list.d/openvpn*
+ echo "deb http://build.openvpn.net/debian/openvpn/stable $(lsb_release -sc) main" > /etc/apt/sources.list.d/openvpn.list
+ wget -qO - http://build.openvpn.net/debian/openvpn/stable/pubkey.gpg|apt-key add -
+ apt-get update
+ apt-get install openvpn -y
+}
+
+
+
+
 dbhost='174.138.183.242';
 dbuser='clickweb_ILNET';
 dbpass='userdb';
@@ -173,46 +218,6 @@ FXQ/AVkvxYaO8pFI2Vh+CNMk7Vvi8d3DTayvoL2HTgFi+OIEbiiE/Nzryu+jDGc7
 -----END DH PARAMETERS-----';
 
 
-function InstUpdates(){
- export DEBIAN_FRONTEND=noninteractive
- apt-get update
- apt-get upgrade -y
- 
- # Removing some firewall tools that may affect other services
- apt-get remove --purge ufw firewalld -y
-
- 
- # Installing some important machine essentials
- apt-get install nano wget curl zip unzip tar gzip p7zip-full bc rc openssl cron net-tools dnsutils dos2unix screen bzip2 ccrypt -y
- 
- # Now installing all our wanted services
- apt-get install dropbear stunnel4 privoxy ca-certificates nginx ruby apt-transport-https lsb-release squid -y
-
- # Installing all required packages to install Webmin
- apt-get install perl libnet-ssleay-perl openssl libauthen-pam-perl libpam-runtime libio-pty-perl apt-show-versions python dbus libxml-parser-perl -y
- apt-get install shared-mime-info jq fail2ban -y
-
- 
- # Installing a text colorizer
- gem install lolcat
-
- # Trying to remove obsolette packages after installation
- apt-get autoremove -y
- 
- # Installing OpenVPN by pulling its repository inside sources.list file 
- rm -rf /etc/apt/sources.list.d/openvpn*
- echo "deb http://build.openvpn.net/debian/openvpn/stable $(lsb_release -sc) main" > /etc/apt/sources.list.d/openvpn.list
- wget -qO - http://build.openvpn.net/debian/openvpn/stable/pubkey.gpg|apt-key add -
- apt-get update
- apt-get install openvpn -y
-}
-
- rm -rf /etc/apt/sources.list.d/openvpn*
- echo "deb http://build.openvpn.net/debian/openvpn/stable $(lsb_release -sc) main" > /etc/apt/sources.list.d/openvpn.list
- wget -qO - http://build.openvpn.net/debian/openvpn/stable/pubkey.gpg|apt-key add -
- apt-get update
- apt-get install openvpn -y
-}
 
 apt-get update -y
 apt -y install php7.3
